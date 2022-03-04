@@ -12,7 +12,7 @@ public class Lab1 {
 		array.add(jagsaalt, 5);
 		array.add(jagsaalt, 6);
 		array.add(jagsaalt, 4);
-		
+		array.add(jagsaalt, 10);
 		try {
 			  System.out.println("1.is empty?");
 			  System.out.println("2.Jagsaaltiin urt?");
