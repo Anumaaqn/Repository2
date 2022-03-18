@@ -20,6 +20,7 @@ public class Lab1 {
 			  System.out.println("4.Jagsaaltiin utguudiig harah");
 			  System.out.println("5.Jagsaaltaas element ustgah");
 			  System.out.println("6.Jagsaaltaas elementeer utga haih");
+			  System.out.println("6.Jagsaaltaas elementeer utga haih");
 
 			  System.out.println("Ta commandaa oruulna");
 		      cmd=scan.nextInt();
