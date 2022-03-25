@@ -6,8 +6,8 @@ public class Lab1 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int cmd, a;
-		int[] jagsaalt = new int[10];
-		LinearList array = new LinearList();
+		Integer[] jagsaalt = new Integer[10];
+		LinearList<Integer> array = new LinearList<Integer>();
 		array.add(jagsaalt, 1);
 		array.add(jagsaalt, 5);
 		array.add(jagsaalt, 6);
@@ -43,6 +43,7 @@ public class Lab1 {
 		    		   System.out.print("Utga nemeh :");
 			    	   a=scan.nextInt();
 			    	   array.add(jagsaalt, a);
+			    	   
 			    	   System.out.println("nemegdlee.");
 			    	   break;
 		    	   case 4:
