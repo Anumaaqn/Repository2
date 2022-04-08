@@ -56,8 +56,7 @@ public class ColoredLight extends Light{
 		}
 		else if(a>=0.9&&a<1) {
 			color = Color.orange;
-		}
-		
+			}
 		}
 		//throw new RuntimeException("ColoredLight.randomChange() not yet implemented!");
 	
