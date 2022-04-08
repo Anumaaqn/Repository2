@@ -5,14 +5,16 @@ import java.util.Random;
 
 public class ColoredLight extends Light{
 	
-	private Color color;
+	Color color;
 	/**
 	 * Creates a new colored light.
 	 * @param color - color of this light.
 	 */
 	public ColoredLight(Color color) {
 	
+		super(true);
 		this.color= color;
+		
 		//throw new RuntimeException("ColoredLight(Color) not yet implemented!");
 	}
 	
@@ -33,7 +35,7 @@ public class ColoredLight extends Light{
 	public void setColor(Color c) {
 		// TODO
 		//throw new RuntimeException("ColoredLight.setColor() not yet implemented!");
-		c= color;
+		c= this.color;
 	}
 	
 	/**
@@ -41,15 +43,22 @@ public class ColoredLight extends Light{
 	 */
 	@Override
 	public void randomChange() {
-		// TODO. 
-		// Take advantage of Light.randomChange
+		double a;
+		a = Math.random();
+		if(a<0.2) {
+			color = Color.blue;
+		}
+		else if(a>=0.3&&a<0.6) {
+			color = Color.white;
+		}
+		else if(a>=0.6&&a<0.9) {
+			color = Color.black;
+		}
+		else if(a>=0.9&&a<1) {
+			color = Color.orange;
+		}
+		
+		}
 		//throw new RuntimeException("ColoredLight.randomChange() not yet implemented!");
-		Random rand = new Random();
-		float r = rand.nextFloat();
-		float g = rand.nextFloat();
-		float b = rand.nextFloat();
-		color = new Color(r, g, b);
-
-	}
 	
 }
