@@ -41,23 +41,13 @@ public class ColoredLight extends Light{
 	/**
 	 * Randomly changes this light to be on or off and its color.
 	 */
-	@Override
+	
 	public void randomChange() {
-		double a;
-		a = Math.random();
-		if(a<0.2) {
-			color = Color.blue;
-		}
-		else if(a>=0.3&&a<0.6) {
-			color = Color.white;
-		}
-		else if(a>=0.6&&a<0.9) {
-			color = Color.black;
-		}
-		else if(a>=0.9&&a<1) {
-			color = Color.orange;
-			}
-		}
-		//throw new RuntimeException("ColoredLight.randomChange() not yet implemented!");
+		Random rand= new Random();
+		float r = rand.nextFloat();
+		float g = rand.nextFloat() / 2f;
+		float b = rand.nextFloat() / 2f;
+		color = new Color(r, g, b);
+	}
 	
 }
