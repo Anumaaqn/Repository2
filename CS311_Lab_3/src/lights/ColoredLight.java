@@ -45,8 +45,8 @@ public class ColoredLight extends Light{
 	public void randomChange() {
 		Random rand= new Random();
 		float r = rand.nextFloat();
-		float g = rand.nextFloat() / 2f;
-		float b = rand.nextFloat() / 2f;
+		float g = rand.nextFloat() ;
+		float b = rand.nextFloat() ;
 		color = new Color(r, g, b);
 	}
 	
