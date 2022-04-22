@@ -1,4 +1,5 @@
 package Lab2;
+
 public class LinearList {
 	public int size=0;
 	public int a[];
@@ -38,5 +39,3 @@ public class LinearList {
 		  
 	}
 }
-
-
