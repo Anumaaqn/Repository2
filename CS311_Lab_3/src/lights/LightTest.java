@@ -36,9 +36,8 @@ public class LightTest {
 		Light secondLight = new Light();
 		
 		firstLight.setOn(true);
-		
 		Assert.assertTrue(firstLight.isOn());
-		Assert.assertFalse(!secondLight.isOn());
+		Assert.assertFalse(secondLight.isOn());
 	}
 	
 	@Test public void testRandomChange() {

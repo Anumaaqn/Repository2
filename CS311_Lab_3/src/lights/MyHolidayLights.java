@@ -20,31 +20,43 @@ public class MyHolidayLights implements HolidayLights {
     public List<Light> next() {
         List<Light> lightlist = new ArrayList<Light>();
         for(int i=0; i<len; i++) {
-             gerel = new ColoredLight(Color.white);
+             gerel = new ColoredLight(Color.black);
                         lightlist.add(gerel);
-            Timer timer = new Timer(300, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    
-                    lightlist.get(s).setOn(false);
-
-                }
-            });
-            timer.setRepeats(true);
-            timer.setCoalesce(true);
-            timer.start();
-            
-        }
+    		if (Math.random() < .5) {
+    			lightlist.get(i).setOn(true);
+    		} else {
+    			lightlist.get(i).setOn(false);
+    		}}
         
-        lightlist.get(s).setOn(true);
+        
         s =s+1;
         if(s>=len) {
         s=0;
+        
         }
          return lightlist;
         }
-        
-
+        /*
+    public  List<Light> next() {
+    	
+    	   List<Light> lightlist = new ArrayList<Light>();
+    	   for(int i=0; i<len; i++) {
+               gerel = new ColoredLight(Color.black);
+                          lightlist.add(gerel);
+                          boolean h = true;
+                  switch(i)        
+      		 {
+                  case 1: lightlist.get(i).setOn(true);
+                  break;
+                  default: lightlist.get(i).setOn(false);
+                  break;
+      		} 
+      			
+    
+    	   }
+      		 return lightlist;
+    
+    	   }*/
     public int getLength() {
       return len;
     }

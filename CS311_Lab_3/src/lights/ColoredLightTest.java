@@ -38,9 +38,10 @@ public class ColoredLightTest {
 		ColoredLight secondLight = new ColoredLight(Color.BLACK);
 		
 		firstLight.setOn(true);
-		
 		Assert.assertTrue(firstLight.isOn());
-		Assert.assertFalse(!secondLight.isOn());
+		secondLight.setOn(false);
+		
+		Assert.assertFalse(secondLight.isOn());
 	}
 	
 	@Test public void testRandomChange() {

@@ -1,124 +1,61 @@
 package lights;
 
-import java.awt.BasicStroke;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Stroke;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
+import org.junit.Assert;
+import org.junit.Test;
 
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.Timer;
+public class MyHolidayLightsTest {
 
-/**
- * JFrame that contains a display of holiday lights and an 'Exit' button.
- * @author uuu
- *
- */
-public class MyHolidayLightsTest extends JFrame {
-	
-	private static final long serialVersionUID = -722257469624438083L;
-	private HolidayLights hl;
-	private static final int millsPerFrame = 490;
-	
-	public MyHolidayLightsTest(HolidayLights hl) {
-		// Sets up the title bar
-		super("Lab 0: Holiday Lights");
-		
-		this.hl = hl;
-		this.setup();
+	@Test public void makeOffLight()  {
+		MyHolidayLights Light = new MyHolidayLights(10);
+		Light.next().get(0).setOn(false);
+		Assert.assertFalse(Light.next().get(0).isOn());
 	}
 	
-	private void setup() {
+	@Test public void makeOnLight() {
+		MyHolidayLights Light = new MyHolidayLights(10);
 		
-		JPanel contentPane = new JPanel();
-		contentPane.setLayout(new BorderLayout());
-		contentPane.setPreferredSize(new Dimension(12*55,110));
+		
+		Assert.assertTrue(Light.next().get(9).isOn());
+	}
 
-		LightWindow lw = new LightWindow(hl);
-		JScrollPane jsp = new JScrollPane(lw);
-		contentPane.add(jsp, BorderLayout.CENTER);
+	@Test public void turnOnLight() {
+		MyHolidayLights Light = new MyHolidayLights(10);
 		
-		Button but = new Button("Exit");
-		but.addActionListener(new ActionListener() {
-			                    public void actionPerformed(ActionEvent e) {
-			                        System.exit(0);
-			                    }
-			                });
-		contentPane.add(but, BorderLayout.EAST);
-		
-		// makes clicking 'x' actually close on macs
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		this.setContentPane(contentPane);
+		Assert.assertTrue(Light.next().get(1).isOn());
 	}
 	
-	private static class LightWindow extends JComponent {
+	@Test public void turnOffLight() {
+		MyHolidayLights Light = new MyHolidayLights(10);
+		Light.next().get(1).setOn(false);
 		
-		private static final long serialVersionUID = 9104734488769833572L;
-
-		private HolidayLights hl;
-		private Timer timer;
-		private List<Light> lightState;
+		Assert.assertFalse(Light.next().get(1).isOn());
+	}
+	
+	@Test public void turnOnOnlyOneLight() {
+	    MyHolidayLights firstLight = new MyHolidayLights(10);
+		MyHolidayLights secondLight = new MyHolidayLights(10);
 		
-		public LightWindow(HolidayLights hl) {
-			this.hl = hl;
-			this.timer = new Timer(MyHolidayLightsTest.millsPerFrame, new ActionListener(){
-				public void actionPerformed(ActionEvent e) {
-					update();
-				}
-			});
-			this.lightState = hl.next();
-			timer.start();
-		}
-				
-		@Override public void paintComponent(Graphics g) {
-			Graphics2D g2d = (Graphics2D) g;
-			int curX = 10;
-			int curY = 30;
-
-			for (int i = 0; i < this.lightState.size(); i++) {
-				Light l = this.lightState.get(i);
-				if (l.isOn()) {
-					g2d.setColor(Color.BLUE);
-					if (l instanceof ColoredLight) {
-						ColoredLight cl = (ColoredLight) l;
-						g2d.setColor(cl.getColor());
-					}
-					g2d.fillOval(curX, curY, 26, 60);
-					g2d.setColor(Color.BLACK);
-					g2d.drawOval(curX, curY, 26, 60);
-				} else {
-					g2d.setColor(Color.BLACK);
-					g2d.drawOval(curX, curY, 26, 60);
-				}
-				
-				// draw line across the top
-				if (i < this.lightState.size() - 1) {
-				g2d.setColor(new Color(0,100,0));
-				Stroke oldStroke = g2d.getStroke();
-				g2d.setStroke(new BasicStroke(6.0f));
-				g2d.drawArc(curX+13, curY-15, 50, 25, 0, 180);
-				g2d.setStroke(oldStroke);
-				}
-				
-				curX += 50;
+		firstLight.next().get(1).setOn(true);
+		secondLight.next().get(1).setOn(false);
+		Assert.assertTrue(firstLight.next().get(1).isOn());
+		Assert.assertFalse(secondLight.next().get(1).isOn());
+	}
+	
+	@Test public void testRandomChange() {
+		MyHolidayLights light = new MyHolidayLights(10);
+		// Call randomChange up to 100 times.
+		// Probabilistically, should turn on at some point.
+		boolean lightChanged = false;
+		for (int i = 0; i < 10; i++) {
+			light.next().get(i).randomChange();
+			if (light.next().get(i).isOn()) {
+				lightChanged = true;
+				break;
 			}
-			
 		}
+		Assert.assertTrue(lightChanged);
 		
-		private void update() {
-			this.lightState = this.hl.next();
-			//this.lightState = this.hl.random();
-			repaint();
-		}	
-}
+	
+	}
+	
 }
