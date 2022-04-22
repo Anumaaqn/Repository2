@@ -36,10 +36,7 @@ public class LightTest {
 		Light secondLight = new Light();
 		
 		firstLight.setOn(true);
-<<<<<<< HEAD
-=======
 		
->>>>>>> branch 'master' of https://github.com/Anumaaqn/Repository2.git
 		Assert.assertTrue(firstLight.isOn());
 		Assert.assertFalse(secondLight.isOn());
 	}

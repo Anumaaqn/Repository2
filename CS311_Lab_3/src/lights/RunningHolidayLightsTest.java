@@ -3,19 +3,59 @@ package lights;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class RunningHolidayLightsTest{
-	
-	
-	@Test public void makeLengthOfList() {
-		RunningHolidayLights runHolLight = new RunningHolidayLights(12);
-		
-		Assert.assertNotNull(runHolLight.getLength());
+public class RunningHolidayLightsTest {
+
+	@Test public void makeOffLight()  {
+		RunningHolidayLights Light = new RunningHolidayLights(10);
+		Light.next().get(0).setOn(false);
+		Assert.assertFalse(Light.next().get(0).isOn());
 	}
 	
-	@Test public void listOfLightLength() {
-		RunningHolidayLights runHolLight = new RunningHolidayLights(12);
+	@Test public void makeOnLight() {
+		RunningHolidayLights Light = new RunningHolidayLights(10);
 		
-		Assert.assertEquals(runHolLight.next().size(), runHolLight.getLength());
+		
+		Assert.assertTrue(Light.next().get(9).isOn());
 	}
 
+	@Test public void turnOnLight() {
+		RunningHolidayLights Light = new RunningHolidayLights(10);
+		
+		Assert.assertTrue(Light.next().get(1).isOn());
 	}
+	
+	@Test public void turnOffLight() {
+		RunningHolidayLights Light = new RunningHolidayLights(10);
+		Light.next().get(1).setOn(false);
+		
+		Assert.assertFalse(Light.next().get(1).isOn());
+	}
+	
+	@Test public void turnOnOnlyOneLight() {
+		RunningHolidayLights firstLight = new RunningHolidayLights(10);
+		RunningHolidayLights secondLight = new RunningHolidayLights(10);
+		
+		firstLight.next().get(1).setOn(true);
+		secondLight.next().get(1).setOn(false);
+		Assert.assertTrue(firstLight.next().get(1).isOn());
+		Assert.assertFalse(secondLight.next().get(1).isOn());
+	}
+	
+	@Test public void testRandomChange() {
+		RunningHolidayLights light = new RunningHolidayLights(10);
+		// Call randomChange up to 100 times.
+		// Probabilistically, should turn on at some point.
+		boolean lightChanged = false;
+		for (int i = 0; i < 10; i++) {
+			light.next().get(i).randomChange();
+			if (light.next().get(i).isOn()) {
+				lightChanged = true;
+				break;
+			}
+		}
+		Assert.assertTrue(lightChanged);
+		
+	
+	}
+	
+}
