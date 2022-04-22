@@ -31,15 +31,6 @@ public class LightTest {
 		Assert.assertFalse(light.isOn());
 	}
 	
-	@Test public void turnOnOnlyOneLight() {
-		Light firstLight = new Light();
-		Light secondLight = new Light();
-		
-		firstLight.setOn(true);
-		
-		Assert.assertTrue(firstLight.isOn());
-		Assert.assertFalse(secondLight.isOn());
-	}
 	
 	@Test public void testRandomChange() {
 		Light light = new Light(false);

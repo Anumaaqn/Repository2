@@ -19,22 +19,26 @@ import javax.swing.Timer;
 
 import org.junit.Assert;
 import org.junit.Test;
-public class MyHolidayLightsTest{
+public class RunningHolidayLightsTest{
 	
 		
 		@Test public void lengthOfList() {
-			MyHolidayLights Light = new MyHolidayLights(12);
+			RunningHolidayLights Light = new RunningHolidayLights(12);
 			
 			Assert.assertNotNull(Light.getLength());
 		}
 		
 		@Test public void listOfnext() {
-			MyHolidayLights Light = new MyHolidayLights(12);
+			RunningHolidayLights Light = new RunningHolidayLights(12);
 			
 			Assert.assertEquals(Light.next().size(), Light.getLength());
 		}
-		
-		
-}
+		@Test public void turnonLights() {
+			RunningHolidayLights Light = new RunningHolidayLights(12);
+				
+			Assert.assertTrue(Light.next().get(0).isOn());
+		}
+
+		}
 
 

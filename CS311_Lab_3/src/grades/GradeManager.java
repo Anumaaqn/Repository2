@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
+
+
 /** 
  * A GradeManager will create a command-line prompt that will let someone add grades
  * and display grades in histogram format.
@@ -35,10 +37,13 @@ public class GradeManager {
 	 * @param grade - grade to add to this grad manager
 	 */
 	public void addGrade(String grade) throws InvalidGradeException {
+		
 		if (grade.equals("a")) {
 			// TODO: YOUR CODE HERE
 		} else if (grade.equals("b")) {
 			// TODO: YOUR CODE HERE
+			
+			//allGrades.put(, );
 		} else if (grade.equals("c")) {
 			// TODO: YOUR CODE HERE
 		} 		
@@ -61,11 +66,8 @@ public class GradeManager {
 	 */
 	public void printHistogram() {
 		// TODO: YOUR CODE HERE
-		for (LetterGrade key: allGrades.keySet()) {
-			
-			System.out.println(key+ " | " +allGrades.get(key) );
-		}
-		throw new RuntimeException("GradeManger.printHistogram() not yet implemented!");
+		System.out.println(getHistString());
+	//	throw new RuntimeException("GradeManger.printHistogram() not yet implemented!");
 	}
 	
 	/**
@@ -98,6 +100,7 @@ public class GradeManager {
 			
 			BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
 			System.out.println("Starting the grade manager");
+			
 			try {
 			while (true) {
 			   String input;

@@ -35,7 +35,7 @@ public class ColoredLight extends Light{
 	public void setColor(Color c) {
 		// TODO
 		//throw new RuntimeException("ColoredLight.setColor() not yet implemented!");
-		c= this.color;
+		this.color= c;
 	}
 	
 	/**
@@ -48,6 +48,11 @@ public class ColoredLight extends Light{
 		float g = rand.nextFloat() ;
 		float b = rand.nextFloat() ;
 		color = new Color(r, g, b);
+		if (Math.random() < .5) {
+			this.setOn(true);
+		} else {
+			this.setOn(false);
+		}
 	}
 	
 }

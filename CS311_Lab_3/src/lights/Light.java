@@ -16,7 +16,7 @@ public class Light extends LightTest {
 	 * Constructor creates a new light object.
 	 */
 	public Light() {
-		isOn=false;
+		this.isOn=false;
 	}
 	
 	/**
