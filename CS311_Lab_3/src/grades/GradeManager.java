@@ -1,5 +1,6 @@
 package grades;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -39,6 +40,14 @@ public class GradeManager {
 	public void addGrade(String grade) throws InvalidGradeException {
 		
 		if (grade.equals("a")) {
+			int count = 0;
+		    while (num != 0) {
+		      // num = num/10
+		      num /= 10;
+		      ++count;
+		    }
+
+			allGrades.replace(LetterGrade.A, count);
 			// TODO: YOUR CODE HERE
 		} else if (grade.equals("b")) {
 			// TODO: YOUR CODE HERE
@@ -54,7 +63,7 @@ public class GradeManager {
 			// TODO: YOUR CODE HERE
 		} 		
 		else {
-			 throw new InvalidGradeException("It is not letter grade" + grade);
+			 throw new InvalidGradeException("It is not letter grade " + grade);
 		}
 		// TODO: Add more cases in here
 		// If grade doesn't match a valid grade, throw an InvalidGradeException
@@ -94,8 +103,9 @@ public class GradeManager {
 	 *                       in a histogram format
 	 *    exit             : exits the program
 	 * @param args
+	 * @throws InvalidGradeException 
 	 */
-	public static void main(String[]  args)  {
+	public static void main(String[]  args) throws InvalidGradeException  {
 		GradeManager gm = new GradeManager();
 			
 			BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
@@ -106,8 +116,9 @@ public class GradeManager {
 			   String input;
 		    	input = cin.readLine();
 				if (input.startsWith("add")) {
-						// TODO: YOUR CODE HERE
-					//gm.addGrade(null);
+					String in;
+				    in = cin.readLine();
+					gm.addGrade(in);
 				} else if (input.equals("print")) {
 	//					// TODO: YOUR CODE HERE
 		     		gm.printHistogram();; 
